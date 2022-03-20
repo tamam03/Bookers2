@@ -1,2 +1,20 @@
-<h1>プロフ編集</h1>
+<h1>User info</h1>
+<%= form_with model:@user do |f| %>
+
+ <label for ="inputName">Name</label><br>
+  <%= f.text_field :name, autofocus: true, id:"inputName", placeholder:"名前"%><br>
+
+ <label for="inputImage">Image</label><br>
+  <%= f.file_field :image, placeholder: "Introduction", accept: "image/*" %><br>
+
+  <label for="inputtext">introduction</label><br>
+  <%= f.text_area :introduction, autofocus: true, id:"inputtext"%><br>
+
+  <%= f.submit "UpdateUser" %>
+<% end %>
+
+
+
+
+
 

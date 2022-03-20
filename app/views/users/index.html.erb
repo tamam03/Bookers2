@@ -2,7 +2,18 @@
 <% @users.each do |users| %>
 
 <div>
-  name: <%=users.name %>
+  <p>image:
+  <% if users.image.attached? %>
+    <%= image_tag users.image, size: "100x100" %>
+  <% else %>
+    <%= image_tag 'no_image', size: "100x100" %>
+  <% end %></p>
+  <p>name: <%=users.name %></p>
 </div>
+<%= link_to "show" , user_path(@user) %>
 
 <% end %>
+
+
+
+
