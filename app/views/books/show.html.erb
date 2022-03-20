@@ -1,7 +1,14 @@
 <h1>Book detail</h1>
 
-アイコン
-名前
+
+
+<p><% if @users.image.attached? %>
+    <%= image_tag @users.image, size: "100x100" %>
+  <% else %>
+    <%= image_tag 'no_image', size: "100x100" %>
+  <% end %></p>
+
+<p><%= @book.user.name %></p>
 
 <p><%= @book.title %></p>
 <p><%= @book.body %></p>
