@@ -4,17 +4,25 @@
 <h3>User info</h3>
 <div>
   <% if @user.image.attached? %>
-    <%= image_tag @user.image, size: "200x200" %>
+    <%= image_tag @user.image, size: "100x100" %>
   <% else %>
-    <%= image_tag 'no_image', size: "200x200" %>
+    <%= image_tag 'no_image', size: "100x100" %>
   <% end %>
-
-  <p>ユーザー画像 </p>
+  <p>name</p>
   <%= @user.name  %>
 </div>
 
 
 
+
+<!--ユーザー投稿一覧-->
+
+<h3>Books</h3>
+<% @books.each do |book| %>
+<li>Title :<%= book.title %></li>
+<li>Opinion :<%= book.body %></li>
+
+<% end %>
 
 
 
