@@ -13,6 +13,9 @@ class User < ApplicationRecord
   # （email のフォーマットなどのバリデーション）
 
     has_one_attached :image
-    
+
     has_many :books,dependent: :destroy
+
+   
+
 end

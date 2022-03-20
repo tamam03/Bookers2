@@ -1,2 +1,8 @@
-<h1>ユーザー一覧</h1>
-<p>ヘッダーリンクより</p>
+<h2>Users</h2>
+<% @users.each do |users| %>
+
+<div>
+  name: <%=users.name %>
+</div>
+
+<% end %>
