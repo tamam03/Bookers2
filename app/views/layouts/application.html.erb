@@ -18,6 +18,9 @@
 
 
   <body>
+  <% flash.each do |key, value| %>
+    <%= content_tag(:div, value, class: "#{key}") %>
+  <% end %>
 
     <header>
       <% if user_signed_in? %>
@@ -33,6 +36,8 @@
       <% end %>
       <li><%= link_to 'Bookers',root_path %></li>
     </header>
+    
+    
     <%= yield %>
   </body>
 </html>

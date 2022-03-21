@@ -1,14 +1,18 @@
-<h2>Users</h2>
-<% @users.each do |users| %>
+
+<%= render'user',user:@user %>
+<%= render 'books/book',book:@book %>
+
+
+
+<h3>Users</h3>
+<% @users.each do |user| %>
 
 <div>
-  <p>image:
-  <% if users.image.attached? %>
-    <%= image_tag users.image, size: "100x100" %>
-  <% else %>
-    <%= image_tag 'no_image', size: "100x100" %>
-  <% end %></p>
-  <p>name: <%=users.name %></p>
+ <p> image:<%= image_tag user.get_image %> </p>
+
+  <p>name: <%=user.name %></p>
+
+
 </div>
 <%= link_to "show" , user_path(@user) %>
 

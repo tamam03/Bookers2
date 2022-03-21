@@ -1,9 +1,14 @@
+<%= render'users/user',user:@user %>
+<%= render 'books/book',book:@book %>
+
+
+
 <h1>Book detail</h1>
 
 
 
-<p><% if @users.image.attached? %>
-    <%= image_tag @users.image, size: "100x100" %>
+<p><% if @user.image.attached? %>
+    <%= image_tag @user.image, size: "100x100" %>
   <% else %>
     <%= image_tag 'no_image', size: "100x100" %>
   <% end %></p>
@@ -14,7 +19,11 @@
 <p><%= @book.body %></p>
 
 
+<% if @book.user == current_user %>
+ <%= link_to "Edit", edit_book_path(@book) %>
+<% end %>
+
 
  <% if @book.user == current_user %>
-    <%= link_to "削除", book_path(@book), method: :delete %>
+    <%= link_to "Destroy", book_path(@book), method: :delete ,"data-confirm" => "本当に消しますか?" %>
  <% end %>
