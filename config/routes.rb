@@ -3,7 +3,7 @@ Rails.application.routes.draw do
   root to:"homes#top"
 
   # メソッド'URL' => 'こんとろーる＃あくしょん'，as:'名前付きルート'
-  get 'homes/about' => 'homes#about' ,as:'about'
+  get 'home/about' => 'homes#about' ,as:'about'
 
   devise_for :users
 

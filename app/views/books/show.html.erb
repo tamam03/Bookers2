@@ -2,33 +2,53 @@
 <%= render'users/user',user:@user %>
 <%= render 'books/book',book:@book %>
 
+<div class="col-md-8 offset-md-1">
+  <h2>Book detail</h2>
+  <table class="table">
+    <tbody>
+      <tr>
+        <td>
+          <% if @user.image.attached? %>
+          <%= image_tag @user.image, size: "100x100" %>
+          <% else %>
+          <%= image_tag 'no_image', size: "100x100" %>
+          <% end %>
+        </td>
+        <td>
+           <%= link_to user_path(@user) do %>
+           <%= @book_find.user.name %>
+           <% end %>
+        </td>
+        <td><%= @book_find.title %></td>
+        <td><%= @book_find.body %></td>
+        <td><% if @book_find.user == current_user %>
+            <%= link_to "Edit", edit_book_path(@book_find), class: "btn btn-sm btn-success" %>
+            <% end %>
+        </td>
+        <td>
+            <% if @book_find.user == current_user %>
+            <%= link_to "Destroy", book_path(@book_find), method: :delete ,"data-confirm" => "本当に消しますか?", class: "btn btn-sm btn-danger" %>
+            <% end %>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>
 
 
-<h1>Book detail</h1>
-
-
-
-<p><% if @user.image.attached? %>
-    <%= image_tag @user.image, size: "100x100" %>
-  <% else %>
-    <%= image_tag 'no_image', size: "100x100" %>
-  <% end %></p>
-
-   <%= link_to user_path(@user) do %>
-<p><%= @book_find.user.name %></p>
-   <% end %>
-
-<p><%= @book_find.title %></p>
-<p><%= @book_find.body %></p>
 
 
 
 
-<% if @book_find.user == current_user %>
- <%= link_to "Edit", edit_book_path(@book_find) %>
-<% end %>
 
 
- <% if @book_find.user == current_user %>
-    <%= link_to "Destroy", book_path(@book_find), method: :delete ,"data-confirm" => "本当に消しますか?" %>
- <% end %>
+
+
+
+
+
+
+
+
+
+
