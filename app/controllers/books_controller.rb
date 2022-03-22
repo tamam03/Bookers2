@@ -7,11 +7,14 @@ class BooksController < ApplicationController
   def create
     # 新規登録
     @book = Book.new(book_params)
-    # "[モデル名].[カラム名]" 保存するカラムの中身を操作
-    # current_user は、現在ログイン中のユーザーに関する情報を取得できる
     @book.user_id = current_user.id
-    @book.save
+    if @book.save
     redirect_to book_path(@book.id)
+    else
+    @books = Book.all
+    @user = current_user
+      render :index
+    end
 
 
 
@@ -20,12 +23,14 @@ class BooksController < ApplicationController
   def index
     @books = Book.all
     @user = current_user
+    @book = Book.new
+
   end
 
   def show
-    @book = Book.find(params[:id])
+    @book_find = Book.find(params[:id])
     @user = current_user
-
+    @book = Book.new
 
 
   end
@@ -54,6 +59,6 @@ class BooksController < ApplicationController
   private
 
   def book_params
-    params.permit(:title, :body)
+    params.require(:book).permit(:title, :body)
   end
 end

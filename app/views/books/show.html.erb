@@ -1,3 +1,4 @@
+<%= render 'books/book.errors',book:@book %>
 <%= render'users/user',user:@user %>
 <%= render 'books/book',book:@book %>
 
@@ -13,17 +14,21 @@
     <%= image_tag 'no_image', size: "100x100" %>
   <% end %></p>
 
-<p><%= @book.user.name %></p>
+   <%= link_to user_path(@user) do %>
+<p><%= @book_find.user.name %></p>
+   <% end %>
 
-<p><%= @book.title %></p>
-<p><%= @book.body %></p>
+<p><%= @book_find.title %></p>
+<p><%= @book_find.body %></p>
 
 
-<% if @book.user == current_user %>
- <%= link_to "Edit", edit_book_path(@book) %>
+
+
+<% if @book_find.user == current_user %>
+ <%= link_to "Edit", edit_book_path(@book_find) %>
 <% end %>
 
 
- <% if @book.user == current_user %>
-    <%= link_to "Destroy", book_path(@book), method: :delete ,"data-confirm" => "本当に消しますか?" %>
+ <% if @book_find.user == current_user %>
+    <%= link_to "Destroy", book_path(@book_find), method: :delete ,"data-confirm" => "本当に消しますか?" %>
  <% end %>

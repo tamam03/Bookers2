@@ -1,12 +1,27 @@
-<%= render'users/user',user:@user %>
+<%= render 'books/book.errors',book:@book %>
+<%= render 'users/user',user:@user %>
 <%= render 'books/book',book:@book %>
 
 
 <h2>Books</h2>
 <% @books.each do |book| %>
 <div>
-  Title：<%= book.title %>
+  <% if @user.image.attached? %>
+    <%= image_tag @user.image, size: "100x100" %>
+
+  <% else %>
+    <%= image_tag 'no_image', size: "100x100" %>
+  <% end %>
+
+
+  Title：
+  <%= link_to book_path(book) do %>
+  <%= book.title %>
+  <% end %>
+
   Opnion:<%= book.body %>
+
+
 </div>
 <% end %>
 

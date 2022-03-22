@@ -1,4 +1,4 @@
-
+<%= render'books/book.errors',book:@book %>
 <%= render'user',user:@user %>
 <%= render 'books/book',book:@book %>
 
@@ -8,7 +8,12 @@
 <% @users.each do |user| %>
 
 <div>
- <p> image:<%= image_tag user.get_image %> </p>
+ <p>  <% if user.image.attached? %>
+    <%= image_tag user.image, size: "100x100" %>
+
+       <% else %>
+    <%= image_tag 'no_image', size: "100x100" %>
+       <% end %> </p>
 
   <p>name: <%=user.name %></p>
 
