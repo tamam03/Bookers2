@@ -1,9 +1,9 @@
-<%= render'books/book.errors',book:@book %>
-<%= render'user',user:@user %>
-<%= render 'books/book',book:@book %>
+<%= render'books/book.errors',book: @book %>
+<%= render'user',user: @user %>
+<%= render 'books/book',book: @book %>
 
 <div class="col-md-8 offset-md-1">
- <h2>Users</h2>
+ <h2>Users</h2>s
  <table class="table">
   <thead>
    <tr>
@@ -16,14 +16,14 @@
    <% @users.each do |user| %>
    <tr>
     <td>
-      <% if user.image.attached? %>
-      <%= image_tag user.image, size: "100x100" %>
+      <% if user.profile_image.attached? %>
+      <%= image_tag user.profile_image %>
       <% else %>
-      <%= image_tag 'no_image', size: "100x100" %>
+      <%= image_tag 'no_image' %>
       <% end %>
     </td>
     <td><%=user.name %></td>
-    <td><%= link_to "show" , user_path(@user) %></td>
+    <td><%= link_to "Show" , user_path(user) %></td>
     <% end %>
    </tr>
   </tbody>

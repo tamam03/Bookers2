@@ -12,7 +12,7 @@ class User < ApplicationRecord
   :validatable
   # （email のフォーマットなどのバリデーション）
 
-    has_one_attached :image
+    has_one_attached :profile_image
 
     has_many :books,dependent: :destroy
 
@@ -24,7 +24,9 @@ class User < ApplicationRecord
     image
     end
 
-    validates :name, presence: true
+    validates :name,
+    presence: true, uniqueness: true, length: { minimum: 2, maximum: 20 }
+    validates :introduction, length: { maximum: 50 }
 
 
 

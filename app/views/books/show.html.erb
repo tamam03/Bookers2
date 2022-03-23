@@ -1,6 +1,6 @@
-<%= render 'books/book.errors',book:@book %>
-<%= render'users/user',user:@user %>
-<%= render 'books/book',book:@book %>
+<%= render 'books/book.errors',book: @book %>
+<%= render'users/user',user: @user %>
+<%= render 'books/book',book: @book %>
 
 <div class="col-md-8 offset-md-1">
   <h2>Book detail</h2>
@@ -8,14 +8,12 @@
     <tbody>
       <tr>
         <td>
-          <% if @user.image.attached? %>
-          <%= image_tag @user.image, size: "100x100" %>
+          <%= link_to user_path(@user) do %>
+          <% if @user.profile_image.attached? %>
+          <%= image_tag @user.profile_image %>
           <% else %>
-          <%= image_tag 'no_image', size: "100x100" %>
+          <%= image_tag 'no_image' %>
           <% end %>
-        </td>
-        <td>
-           <%= link_to user_path(@user) do %>
            <%= @book_find.user.name %>
            <% end %>
         </td>
