@@ -28,6 +28,7 @@
             <%= link_to "Destroy", book_path(@book_find), method: :delete ,"data-confirm" => "本当に消しますか?", class: "btn btn-sm btn-danger" %>
             <% end %>
         </td>
+        <td><p class="view-counts">数：<%= @book_find.view_counts.count %></p></td>
       </tr>
     </tbody>
   </table>
