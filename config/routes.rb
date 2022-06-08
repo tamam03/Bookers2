@@ -10,4 +10,5 @@ Rails.application.routes.draw do
   resources :users, only: [:index, :show, :edit, :update]
   resources :books, only: [:index, :show, :edit, :new, :create, :update, :destroy]
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
+ resources :groups, only: [:index, :show, :create, :new, :update, :destroy]
 end
